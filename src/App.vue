@@ -1,29 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Header/>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm">
+          <RouterView />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { createComponent } from 'vue-function-api';
+import Header from './components/Header.vue';
+import RouterView from './components/RouterView.vue';
 
-export default Vue.extend({
-  name: 'app',
-  components: {
-    HelloWorld,
-  },
+export default createComponent({
+  components: { Header, RouterView },
 });
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import 'https://cdn.jsdelivr.net/gh/hermanya/react-color-table/example/public/bootstrap-with-variables.css';
 </style>
