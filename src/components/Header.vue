@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from 'vue-function-api';
+import { createComponent } from '@vue/composition-api';
 import { useI18n } from '../composites/base/i18n';
 import { useStore } from '../composites/base/store';
 
