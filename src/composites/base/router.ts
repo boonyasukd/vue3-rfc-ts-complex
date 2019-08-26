@@ -1,10 +1,10 @@
 import log from 'loglevel';
-import { value, onMounted, onUnmounted, Wrapper } from 'vue-function-api';
+import { ref, onMounted, onUnmounted, Ref } from '@vue/composition-api';
 import { find } from 'lodash';
 import { Route } from '../../models';
 
 let routes: Route[];
-let currentRoute: Wrapper<Route>;
+let currentRoute: Ref<Route>;
 
 function findRoute() {
   const path = window.location.hash.slice(1);
@@ -15,7 +15,7 @@ function initRouter(appRoutes: Route[]) {
   log.info('setting up router...');
   routes = appRoutes;
   window.location.hash = '#/';
-  currentRoute = value(findRoute());
+  currentRoute = ref(findRoute());
 
   const update = () => {
     currentRoute.value = findRoute();

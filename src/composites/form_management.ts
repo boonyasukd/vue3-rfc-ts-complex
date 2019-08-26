@@ -1,7 +1,6 @@
-import { provide, computed, Wrapper } from 'vue-function-api';
+import { provide, inject, computed, Ref, InjectionKey } from '@vue/composition-api';
 import { Errors, AttributeNames, ErrorMessages } from 'validatorjs';
 
-import { Key, inject } from '../utils/injection';
 import { getRules } from '../utils/validation_rules';
 import { Newable } from '../models';
 
@@ -11,9 +10,9 @@ import { useRouter } from './base/router';
 import { useI18n } from './base/i18n';
 
 const symbols = {
-  formData: Symbol() as Key<any>,
-  formLabels: Symbol() as Key<AttributeNames>,
-  formErrors: Symbol() as Key<Wrapper<Errors>>,
+  formData: Symbol() as InjectionKey<any>,
+  formLabels: Symbol() as InjectionKey<AttributeNames>,
+  formErrors: Symbol() as InjectionKey<Ref<Errors>>,
 };
 
 function useFormManager(formType: Newable<any>) {
@@ -30,11 +29,9 @@ function useFormManager(formType: Newable<any>) {
   const formErrorMsgs = getLocalizedErrorMsgs() as ErrorMessages;
   const { valid, errors } = useValidation(formData, formRules, formLabels, formErrorMsgs);
 
-  provide({
-    [symbols.formData as symbol]: formData,
-    [symbols.formLabels as symbol]: formLabels,
-    [symbols.formErrors as symbol]: errors,
-  });
+  provide(symbols.formData, formData);
+  provide(symbols.formLabels, formLabels);
+  provide(symbols.formErrors, errors);
 
   return {
     formName,
@@ -51,17 +48,17 @@ function useFormManager(formType: Newable<any>) {
 }
 
 function useFormFieldManager(fieldName: string) {
-  const formData = inject(symbols.formData);
-  const labels = inject(symbols.formLabels);
-  const errors = inject(symbols.formErrors);
+  const formData = inject(symbols.formData, undefined);
+  const labels = inject(symbols.formLabels, {} as AttributeNames);
+  const errors = inject(symbols.formErrors, {} as Ref<Errors>);
 
-  const value = computed(
-    () => formData[fieldName],
-    val => {
+  const value = computed({
+    get: () => formData[fieldName],
+    set: val => {
       formData[fieldName] = val;
     },
-  );
-  const label = computed(() => labels[fieldName]);
+  });
+  const label = labels[fieldName];
   const error = computed(() => errors.value.first(fieldName));
 
   return { value, label, error };

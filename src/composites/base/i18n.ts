@@ -1,13 +1,13 @@
 import log from 'loglevel';
 import format from 'string-format-obj';
 import { get } from 'lodash';
-import { Wrapper } from 'vue-function-api';
+import { Ref } from '@vue/composition-api';
 import { Newable } from '../../models';
 import { msgs } from '../../utils/locale_messages';
 
-let locale: Wrapper<string>;
+let locale: Ref<string>;
 
-function initI18n(appLocale: Wrapper<string>) {
+function initI18n(appLocale: Ref<string>) {
   log.info('setting up i18n...');
   locale = appLocale;
 }
