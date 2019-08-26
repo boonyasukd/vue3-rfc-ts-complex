@@ -7,17 +7,13 @@
 </template>
 
 <script lang="ts">
-import { createComponent, Ref, PropType } from '@vue/composition-api';
+import { createComponent, Ref } from '@vue/composition-api';
 import { useI18n } from '../composites/base/i18n';
 
 interface Props { valid: Ref<boolean>, save: () => void, reset: () => void }
 
-export default createComponent({
-  props: {
-    valid: { type: null as unknown as PropType<Ref<boolean>>, required: true },
-    save: { type: null as unknown as PropType<() => void>, required: true },
-    reset: { type: null as unknown as PropType<() => void>, required: true },
-  } as const,
+export default createComponent<Props>({
+  props: { valid: {}, save: {}, reset: {} }, // needed for vue 2.x
   setup({ valid, save, reset }: Props) {
     const { msg } = useI18n();
     return { valid, save, reset, msg };

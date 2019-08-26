@@ -18,8 +18,8 @@ import { useFormFieldManager } from '../composites/form_management';
 
 interface Props { fieldName: string }
 
-export default createComponent({
-  props: { fieldName: { type: String, required: true } } as const,
+export default createComponent<Props>({
+  props: { fieldName: {} }, // needed for vue 2.x
   setup({ fieldName }: Props) {
     const { value, label, error } = useFormFieldManager(fieldName);
     return { fieldName, value, label, error };
