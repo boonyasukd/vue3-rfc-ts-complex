@@ -2,7 +2,7 @@
   <div class="app-header">
     <img width="13%" src="../assets/logo.png">
     <h3>
-      <code>function-based api</code> demo
+      <code>composition api</code> demo
     </h3>
     <p v-if="!isLoggedIn">{{ msg('chooseProfile') }}</p>
     <p v-else class="text-primary">{{ msg('welcome', { nickname: user.nickname }) }}</p>
