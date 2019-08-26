@@ -7,14 +7,18 @@
 </template>
 
 <script lang="ts">
-import { Wrapper, createComponent } from 'vue-function-api';
+import { createComponent, Ref, PropType } from '@vue/composition-api';
 import { useI18n } from '../composites/base/i18n';
 
-interface Props { valid: Wrapper<boolean>, save: () => void, reset: () => void }
+interface Props { valid: Ref<boolean>, save: () => void, reset: () => void }
 
 export default createComponent({
-  props: ['valid', 'save', 'reset'] as unknown as Props,
-  setup({ valid, save, reset }) {
+  props: {
+    valid: { type: null as unknown as PropType<Ref<boolean>>, required: true },
+    save: { type: null as unknown as PropType<() => void>, required: true },
+    reset: { type: null as unknown as PropType<() => void>, required: true },
+  } as const,
+  setup({ valid, save, reset }: Props) {
     const { msg } = useI18n();
     return { valid, save, reset, msg };
   },

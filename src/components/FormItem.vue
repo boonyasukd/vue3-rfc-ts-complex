@@ -13,14 +13,14 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from 'vue-function-api';
+import { createComponent } from '@vue/composition-api';
 import { useFormFieldManager } from '../composites/form_management';
 
 interface Props { fieldName: string }
 
 export default createComponent({
-  props: ['fieldName'] as unknown as Props,
-  setup({ fieldName }) {
+  props: { fieldName: { type: String, required: true } } as const,
+  setup({ fieldName }: Props) {
     const { value, label, error } = useFormFieldManager(fieldName);
     return { fieldName, value, label, error };
   },
