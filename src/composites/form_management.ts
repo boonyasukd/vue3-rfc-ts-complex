@@ -59,7 +59,7 @@ function useFormFieldManager(fieldName: string) {
     },
   });
   const label = labels ? labels[fieldName] : '';
-  const error = computed(() => errors ? errors.value.first(fieldName) : '');
+  const error = computed(() => (errors ? errors.value.first(fieldName) : ''));
 
   return { value, label, error };
 }
