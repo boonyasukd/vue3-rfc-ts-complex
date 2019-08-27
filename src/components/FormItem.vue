@@ -20,9 +20,9 @@ interface Props { fieldName: string }
 
 export default createComponent<Props>({
   props: { fieldName: {} }, // needed for vue 2.x
-  setup({ fieldName }: Props) {
-    const { value, label, error } = useFormFieldManager(fieldName);
-    return { fieldName, value, label, error };
+  setup(props: Props) {
+    const { value, label, error } = useFormFieldManager(props.fieldName);
+    return { value, label, error };
   },
 });
 </script>

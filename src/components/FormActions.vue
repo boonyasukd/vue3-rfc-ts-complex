@@ -14,9 +14,9 @@ interface Props { valid: Ref<boolean>, save: () => void, reset: () => void }
 
 export default createComponent<Props>({
   props: { valid: {}, save: {}, reset: {} }, // needed for vue 2.x
-  setup({ valid, save, reset }: Props) {
+  setup() {
     const { msg } = useI18n();
-    return { valid, save, reset, msg };
+    return { msg };
   },
 });
 </script>
