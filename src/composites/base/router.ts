@@ -1,32 +1,29 @@
 import log from 'loglevel';
-import { value, onMounted, onUnmounted, Wrapper } from 'vue-function-api';
+import { ref, Ref, onMounted, onUnmounted } from '@vue/composition-api';
 import { find } from 'lodash';
 import { Route } from '../../models';
 
 let routes: Route[];
-let currentRoute: Wrapper<Route>;
+let currentRoute: Ref<Route>;
 
-function findRoute() {
+function updateCurrentRoute() {
   const path = window.location.hash.slice(1);
-  return find(routes, ['path', path]) || new Route();
+  currentRoute.value = find(routes, ['path', path]) || new Route();
+  log.info(`navigating to route '${currentRoute.value.name}'...`);
 }
 
 function initRouter(appRoutes: Route[]) {
   log.info('setting up router...');
   routes = appRoutes;
   window.location.hash = '#/';
-  currentRoute = value(findRoute());
-
-  const update = () => {
-    currentRoute.value = findRoute();
-    log.info(`navigating to route '${currentRoute.value.name}'...`);
-  };
+  currentRoute = ref(new Route());
+  updateCurrentRoute();
 
   onMounted(() => {
-    window.addEventListener('hashchange', update);
+    window.addEventListener('hashchange', updateCurrentRoute);
   });
   onUnmounted(() => {
-    window.removeEventListener('hashchange', update);
+    window.removeEventListener('hashchange', updateCurrentRoute);
   });
 }
 

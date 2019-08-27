@@ -1,8 +1,8 @@
 import log from 'loglevel';
-import { watch, Wrapper } from 'vue-function-api';
+import { watch, Ref } from '@vue/composition-api';
 
-function initTheme(color: Wrapper<string>) {
-  watch(() => color.value, () => applyThemeColor(color.value));
+function initTheme(colorRef: Ref<string>) {
+  watch(colorRef, applyThemeColor);
 }
 
 function applyThemeColor(color: string) {

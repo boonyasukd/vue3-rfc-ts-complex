@@ -7,16 +7,16 @@
 </template>
 
 <script lang="ts">
-import { Wrapper, createComponent } from 'vue-function-api';
+import { createComponent, Ref } from '@vue/composition-api';
 import { useI18n } from '../composites/base/i18n';
 
-interface Props { valid: Wrapper<boolean>, save: () => void, reset: () => void }
+interface Props { valid: Ref<boolean>, save: () => void, reset: () => void }
 
-export default createComponent({
-  props: ['valid', 'save', 'reset'] as unknown as Props,
-  setup({ valid, save, reset }) {
+export default createComponent<Props>({
+  props: { valid: {}, save: {}, reset: {} }, // needed for vue 2.x
+  setup() {
     const { msg } = useI18n();
-    return { valid, save, reset, msg };
+    return { msg };
   },
 });
 </script>

@@ -1,6 +1,6 @@
 import log from 'loglevel';
 import Vue from 'vue';
-import { computed } from 'vue-function-api';
+import { computed } from '@vue/composition-api';
 import { Newable, User, NewCustomerForm, NewProductForm } from '../../models';
 
 log.info('setting up a global store...');

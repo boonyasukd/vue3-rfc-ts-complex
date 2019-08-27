@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from 'vue-function-api';
+import { createComponent } from '@vue/composition-api';
 import { useRouter } from '../composites/base/router';
 
 export default createComponent({
