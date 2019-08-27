@@ -48,9 +48,9 @@ function useFormManager(formType: Newable<any>) {
 }
 
 function useFormFieldManager(fieldName: string) {
-  const formData = inject(symbols.formData, undefined);
-  const labels = inject(symbols.formLabels, {} as AttributeNames);
-  const errors = inject(symbols.formErrors, {} as Ref<Errors>);
+  const formData = inject(symbols.formData);
+  const labels = inject(symbols.formLabels);
+  const errors = inject(symbols.formErrors);
 
   const value = computed({
     get: () => formData[fieldName],
@@ -58,8 +58,8 @@ function useFormFieldManager(fieldName: string) {
       formData[fieldName] = val;
     },
   });
-  const label = labels[fieldName];
-  const error = computed(() => errors.value.first(fieldName));
+  const label = labels ? labels[fieldName] : '';
+  const error = computed(() => errors ? errors.value.first(fieldName) : '');
 
   return { value, label, error };
 }
