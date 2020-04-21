@@ -1,5 +1,5 @@
 import log from 'loglevel';
-import { watch, Ref } from '@vue/composition-api';
+import { watch, Ref } from 'vue';
 
 function initTheme(colorRef: Ref<string>) {
   watch(colorRef, applyThemeColor);

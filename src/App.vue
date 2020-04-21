@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header />
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm">
@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import Header from './components/Header.vue';
 import RouterView from './components/RouterView.vue';
 
-export default createComponent({
+export default defineComponent({
   components: { Header, RouterView },
 });
 </script>

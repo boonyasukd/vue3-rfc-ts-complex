@@ -1,4 +1,4 @@
-import { provide, inject, computed, Ref, InjectionKey } from '@vue/composition-api';
+import { provide, inject, computed, Ref, InjectionKey } from 'vue';
 import { Errors, AttributeNames, ErrorMessages } from 'validatorjs';
 
 import { getRules } from '../utils/validation_rules';
@@ -59,7 +59,7 @@ function useFormFieldManager(fieldName: string) {
     },
   });
   const label = labels ? labels[fieldName] : '';
-  const error = computed(() => (errors ? errors.value.first(fieldName) : ''));
+  const error = computed(() => errors?.value.first(fieldName) || '');
 
   return { value, label, error };
 }

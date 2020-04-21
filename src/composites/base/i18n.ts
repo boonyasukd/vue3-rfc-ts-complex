@@ -1,7 +1,7 @@
 import log from 'loglevel';
 import format from 'string-format-obj';
 import { get } from 'lodash';
-import { Ref } from '@vue/composition-api';
+import { Ref } from 'vue';
 import { Newable } from '../../models';
 import { msgs } from '../../utils/locale_messages';
 

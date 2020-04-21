@@ -22,11 +22,11 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { useStore } from '../composites/base/store';
 import { useRouter } from '../composites/base/router';
 
-export default createComponent({
+export default defineComponent({
   setup() {
     const { login } = useStore();
     const { push } = useRouter();

@@ -1,10 +1,9 @@
 import log from 'loglevel';
-import Vue from 'vue';
-import { computed } from '@vue/composition-api';
+import { computed, reactive } from 'vue';
 import { Newable, User, NewCustomerForm, NewProductForm } from '../../models';
 
 log.info('setting up a global store...');
-const data = Vue.observable({
+const data = reactive({
   user: new User(),
   formData: {
     [NewCustomerForm.name]: new NewCustomerForm(),

@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { useRouter } from '../composites/base/router';
 
-export default createComponent({
+export default defineComponent({
   setup() {
     const { currentRoute } = useRouter();
     return { currentRoute };
