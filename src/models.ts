@@ -1,11 +1,11 @@
-import Vue, { VueConstructor } from 'vue';
+import { Component } from 'vue';
 
-type Newable<T> = { new (...args: any[]): T; };
+type Newable<T> = { new (...args: any[]): T };
 
 class Route {
-  path: string = 'unknown';
-  name: string = 'unknown';
-  component?: VueConstructor<Vue>;
+  path = 'unknown';
+  name = 'unknown';
+  component?: Component;
 }
 
 class User {

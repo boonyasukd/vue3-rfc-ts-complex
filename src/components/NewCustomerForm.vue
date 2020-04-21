@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { useI18n } from '../composites/base/i18n';
 import { useFormManager } from '../composites/form_management';
 import { NewCustomerForm } from '../models';
@@ -24,7 +24,7 @@ import { NewCustomerForm } from '../models';
 import FormItem from './FormItem.vue';
 import FormActions from './FormActions.vue';
 
-export default createComponent({
+export default defineComponent({
   setup() {
     const { formName, valid, save, reset } = useFormManager(NewCustomerForm);
     const { msg } = useI18n();

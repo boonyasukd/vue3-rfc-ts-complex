@@ -16,7 +16,7 @@ const rules = {
     price: 'required|numeric',
   },
 } as {
-  [name: string] : Rules
+  [name: string]: Rules;
 };
 
 const getRules = (formType: Newable<any>) => rules[formType.name];

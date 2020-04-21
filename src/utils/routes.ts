@@ -1,3 +1,4 @@
+import { markRaw } from 'vue';
 import { Route } from '../models';
 import ProfileChooser from '../components/ProfileChooser.vue';
 import FormChooser from '../components/FormChooser.vue';
@@ -8,22 +9,22 @@ const routes = [
   {
     path: '/',
     name: 'profileChooser',
-    component: ProfileChooser,
+    component: markRaw(ProfileChooser),
   },
   {
     path: '/formChooser',
     name: 'formChooser',
-    component: FormChooser,
+    component: markRaw(FormChooser),
   },
   {
     path: '/newCustomer',
     name: 'newCustomer',
-    component: NewCustomerForm,
+    component: markRaw(NewCustomerForm),
   },
   {
     path: '/newProduct',
     name: 'newProduct',
-    component: NewProductForm,
+    component: markRaw(NewProductForm),
   },
 ] as Route[];
 

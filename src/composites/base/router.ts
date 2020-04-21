@@ -1,5 +1,5 @@
 import log from 'loglevel';
-import { ref, Ref, onMounted, onUnmounted } from '@vue/composition-api';
+import { ref, Ref, onMounted, onUnmounted } from 'vue';
 import { find } from 'lodash';
 import { Route } from '../../models';
 

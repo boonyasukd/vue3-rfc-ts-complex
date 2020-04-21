@@ -1,5 +1,5 @@
 import log from 'loglevel';
-import { watch, ref } from '@vue/composition-api';
+import { watch, ref, Ref } from 'vue';
 import Validator, { Rules, AttributeNames, ErrorMessages, Errors } from 'validatorjs';
 
 function useValidation(
@@ -9,8 +9,8 @@ function useValidation(
   localizedErrorMsgs: ErrorMessages,
 ) {
   log.info('setting up validation...');
-  const valid = ref(true);
-  const errors = ref({} as Errors);
+  const valid = ref(false);
+  const errors: Ref<Errors> = ref({ first: () => false } as unknown as Errors);
   const validateAll = () => {
     const validator = new Validator(model, rules, localizedErrorMsgs);
     validator.setAttributeNames(localizedFieldNames);

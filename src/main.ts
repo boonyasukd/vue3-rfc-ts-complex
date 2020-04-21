@@ -1,6 +1,5 @@
 import log from 'loglevel';
-import Vue from 'vue';
-import VueCompositionApi, { createComponent } from '@vue/composition-api';
+import { createApp, defineComponent, h } from 'vue';
 import { initStore } from './composites/base/store';
 import { initTheme } from './composites/base/theme';
 import { initI18n } from './composites/base/i18n';
@@ -9,15 +8,17 @@ import { routes } from './utils/routes';
 import App from './App.vue';
 
 log.setDefaultLevel('INFO');
-Vue.config.productionTip = false;
-Vue.use(VueCompositionApi);
 
-new Vue(createComponent({
+const app = createApp(defineComponent({
   setup() {
     const { appLocale, appThemeColor } = initStore();
     initTheme(appThemeColor);
     initI18n(appLocale);
     initRouter(routes);
+
+    return () => h(App);
   },
-  render: h => h(App),
-})).$mount('#app');
+}));
+
+app.config.globalProperties.productionTip = false;
+app.mount('#app');

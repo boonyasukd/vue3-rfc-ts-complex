@@ -23,11 +23,11 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { useI18n } from '../composites/base/i18n';
 import { useRouter } from '../composites/base/router';
 
-export default createComponent({
+export default defineComponent({
   setup() {
     const { push } = useRouter();
     const { msg } = useI18n();
