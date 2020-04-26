@@ -23,18 +23,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useStore } from '../composites/base/store';
-import { useRouter } from '../composites/base/router';
+import { useRouter } from 'vue-router';
+import store from '@/store';
 
 export default defineComponent({
   setup() {
-    const { login } = useStore();
-    const { push } = useRouter();
+    const router = useRouter();
 
     return {
       loginAndRedirect(name: string) {
-        login(name);
-        push({ name: 'formChooser' });
+        store.commit.login(name);
+        router.push({ name: 'formChooser' });
       },
     };
   },

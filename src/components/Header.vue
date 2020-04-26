@@ -4,22 +4,22 @@
     <h3>
       <code>composition api</code> demo
     </h3>
-    <p v-if="!isLoggedIn">{{ msg('chooseProfile') }}</p>
-    <p v-else class="text-primary">{{ msg('welcome', { nickname: user.nickname }) }}</p>
+    <p v-if="!getters.isLoggedIn">{{ msg('chooseProfile') }}</p>
+    <p v-else class="text-primary">{{ msg('welcome', { nickname: state.user.nickname }) }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from '../composites/base/i18n';
-import { useStore } from '../composites/base/store';
+import { useI18n } from '@/composites/base/i18n';
+import store from '@/store';
 
 export default defineComponent({
   setup() {
     const { msg } = useI18n();
-    const { isLoggedIn, user } = useStore();
+    const { state, getters } = store;
 
-    return { msg, isLoggedIn, user };
+    return { msg, state, getters };
   },
 });
 </script>

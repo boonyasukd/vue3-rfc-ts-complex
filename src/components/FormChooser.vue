@@ -24,8 +24,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 import { useI18n } from '../composites/base/i18n';
-import { useRouter } from '../composites/base/router';
 
 export default defineComponent({
   setup() {

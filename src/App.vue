@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm">
-          <RouterView />
+          <router-view />
         </div>
       </div>
     </div>
@@ -14,10 +14,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Header from './components/Header.vue';
-import RouterView from './components/RouterView.vue';
 
 export default defineComponent({
-  components: { Header, RouterView },
+  components: { Header },
 });
 </script>
 

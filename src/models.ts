@@ -1,12 +1,4 @@
-import { Component } from 'vue';
-
 type Newable<T> = { new (...args: any[]): T };
-
-class Route {
-  path = 'unknown';
-  name = 'unknown';
-  component?: Component;
-}
 
 class User {
   nickname: string | null = null;
@@ -29,4 +21,4 @@ class NewProductForm {
   price: number | null = null;
 }
 
-export { Newable, Route, User, NewCustomerForm, NewProductForm };
+export { Newable, User, NewCustomerForm, NewProductForm };

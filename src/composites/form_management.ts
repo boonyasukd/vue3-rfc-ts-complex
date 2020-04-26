@@ -1,13 +1,12 @@
 import { provide, inject, computed, Ref, InjectionKey } from 'vue';
 import { Errors, AttributeNames, ErrorMessages } from 'validatorjs';
+import { useRouter } from 'vue-router';
 
-import { getRules } from '../utils/validation_rules';
-import { Newable } from '../models';
-
-import { useValidation } from './base/validation';
-import { useStore } from './base/store';
-import { useRouter } from './base/router';
-import { useI18n } from './base/i18n';
+import { Newable } from '@/models';
+import { getRules } from '@/utils/validation_rules';
+import { useValidation } from '@/composites/base/validation';
+import { useI18n } from '@/composites/base/i18n';
+import store from '@/store';
 
 const symbols = {
   formData: Symbol() as InjectionKey<any>,
@@ -16,14 +15,13 @@ const symbols = {
 };
 
 function useFormManager(formType: Newable<any>) {
-  const { getFormData, getSaveFunction, reset: resetStore } = useStore();
   const { getLocalizedFieldNames, getLocalizedErrorMsgs } = useI18n();
   const { push } = useRouter();
 
-  const saveFunction = getSaveFunction(formType);
+  const saveFunction = store.getters.saveFunction(formType);
 
   const formName = formType.name;
-  const formData = getFormData(formType);
+  const formData = store.getters.formData(formType);
   const formRules = getRules(formType);
   const formLabels = getLocalizedFieldNames(formType) as AttributeNames;
   const formErrorMsgs = getLocalizedErrorMsgs() as ErrorMessages;
@@ -41,7 +39,7 @@ function useFormManager(formType: Newable<any>) {
       push({ name: 'profileChooser' });
     },
     reset() {
-      resetStore();
+      store.commit.reset();
       push({ name: 'profileChooser' });
     },
   };
