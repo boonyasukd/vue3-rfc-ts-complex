@@ -1,5 +1,5 @@
 import { Rules } from 'validatorjs';
-import { Newable, NewCustomerForm, NewProductForm } from '../models';
+import { Newable, NewCustomerForm, NewProductForm } from '@/models';
 
 const rules = {
   [NewCustomerForm.name]: {

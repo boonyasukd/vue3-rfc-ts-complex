@@ -1,4 +1,4 @@
-import { NewCustomerForm, NewProductForm } from '../models';
+import { NewCustomerForm, NewProductForm } from '@/models';
 
 const msgs = {
   en: {

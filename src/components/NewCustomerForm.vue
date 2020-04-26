@@ -17,9 +17,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from '../composites/base/i18n';
-import { useFormManager } from '../composites/form_management';
-import { NewCustomerForm } from '../models';
+import { useI18n } from '@/composites/base/i18n';
+import { useFormManager } from '@/composites/form_management';
+import { NewCustomerForm } from '@/models';
 
 import FormItem from './FormItem.vue';
 import FormActions from './FormActions.vue';

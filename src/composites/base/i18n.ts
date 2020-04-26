@@ -2,8 +2,8 @@ import log from 'loglevel';
 import format from 'string-format-obj';
 import { get } from 'lodash';
 import { Ref } from 'vue';
-import { Newable } from '../../models';
-import { msgs } from '../../utils/locale_messages';
+import { Newable } from '@/models';
+import { msgs } from '@/utils/locale_messages';
 
 let locale: Ref<string>;
 

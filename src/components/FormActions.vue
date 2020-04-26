@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from '../composites/base/i18n';
+import { useI18n } from '@/composites/base/i18n';
 
 export default defineComponent({
   props: ['valid', 'save', 'reset'],

@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useFormFieldManager } from '../composites/form_management';
+import { useFormFieldManager } from '@/composites/form_management';
 
 export default defineComponent({
   props: ['fieldName'],
