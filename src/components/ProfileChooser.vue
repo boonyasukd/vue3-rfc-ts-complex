@@ -21,21 +21,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import store from '@/store';
 
-export default defineComponent({
-  setup() {
-    const router = useRouter();
+const router = useRouter();
 
-    return {
-      loginAndRedirect(name: string) {
-        store.commit.login(name);
-        router.push({ name: 'formChooser' });
-      },
-    };
-  },
-});
+export const loginAndRedirect = (name: string) => {
+  store.commit.login(name);
+  router.push({ name: 'formChooser' });
+};
 </script>

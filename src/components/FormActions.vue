@@ -6,15 +6,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup="props">
+import { Ref } from 'vue';
 import { useI18n } from '@/composites/base/i18n';
 
-export default defineComponent({
-  props: ['valid', 'save', 'reset'],
-  setup() {
-    const { msg } = useI18n();
-    return { msg };
-  },
-});
+declare const props: {
+  valid: Ref<boolean>;
+  save: () => void;
+  reset: () => void;
+};
+
+export const { msg } = useI18n();
 </script>

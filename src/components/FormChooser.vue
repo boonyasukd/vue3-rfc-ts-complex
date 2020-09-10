@@ -22,22 +22,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import { useI18n } from '@/composites/base/i18n';
 
-export default defineComponent({
-  setup() {
-    const { push } = useRouter();
-    const { msg } = useI18n();
+const { push } = useRouter();
 
-    return {
-      msg,
-      chooseForm(name: string) {
-        push({ name });
-      },
-    };
-  },
-});
+export const { msg } = useI18n();
+export const chooseForm = (name: string) => { push({ name }); };
 </script>

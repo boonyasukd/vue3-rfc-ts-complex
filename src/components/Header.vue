@@ -9,19 +9,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import { useI18n } from '@/composites/base/i18n';
 import store from '@/store';
 
-export default defineComponent({
-  setup() {
-    const { msg } = useI18n();
-    const { state, getters } = store;
-
-    return { msg, state, getters };
-  },
-});
+export const { msg } = useI18n();
+export const { state, getters } = store;
 </script>
 
 <style>

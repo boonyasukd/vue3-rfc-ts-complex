@@ -15,22 +15,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import { useI18n } from '@/composites/base/i18n';
 import { useFormManager } from '@/composites/form_management';
 import { NewCustomerForm } from '@/models';
 
-import FormItem from './FormItem.vue';
-import FormActions from './FormActions.vue';
-
-export default defineComponent({
-  setup() {
-    const { formName, valid, save, reset } = useFormManager(NewCustomerForm);
-    const { msg } = useI18n();
-
-    return { msg, formName, valid, save, reset };
-  },
-  components: { FormItem, FormActions },
-});
+export { default as FormItem } from './FormItem.vue';
+export { default as FormActions } from './FormActions.vue';
+export const { formName, valid, save, reset } = useFormManager(NewCustomerForm);
+export const { msg } = useI18n();
 </script>
