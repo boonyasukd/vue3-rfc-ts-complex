@@ -12,15 +12,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup="props">
 import { useFormFieldManager } from '@/composites/form_management';
 
-export default defineComponent({
-  props: ['fieldName'],
-  setup(props) {
-    const { value, label, error } = useFormFieldManager(props.fieldName);
-    return { value, label, error };
-  },
-});
+declare const props: { fieldName: string };
+
+export const { value, label, error } = useFormFieldManager(props.fieldName);
 </script>
