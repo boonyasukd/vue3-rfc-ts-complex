@@ -6,15 +6,14 @@
   </div>
 </template>
 
-<script lang="ts" setup="props">
-import { Ref } from 'vue';
-import { useI18n } from '@/composites/base/i18n';
+<script lang="ts" setup>
+import { defineProps, PropType } from 'vue';
+import { useI18n } from '@/compositions/base/i18n';
 
-declare const props: {
-  valid: Ref<boolean>;
-  save: () => void;
-  reset: () => void;
-};
-
-export const { msg } = useI18n();
+const props = defineProps({
+  valid: { type: Object as PropType<boolean>, required: true },
+  save: { type: Object as PropType<() => void>, required: true },
+  reset: { type: Object as PropType<() => void>, required: true },
+});
+const { msg } = useI18n();
 </script>

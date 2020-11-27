@@ -24,10 +24,9 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
-import { useI18n } from '@/composites/base/i18n';
+import { useI18n } from '@/compositions/base/i18n';
 
 const { push } = useRouter();
-
-export const { msg } = useI18n();
-export const chooseForm = (name: string) => { push({ name }); };
+const { msg } = useI18n();
+const chooseForm = (name: string) => { push({ name }); };
 </script>

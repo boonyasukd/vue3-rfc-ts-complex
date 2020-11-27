@@ -4,8 +4,8 @@ import { useRouter } from 'vue-router';
 
 import { Newable } from '@/models';
 import { getRules } from '@/utils/validation_rules';
-import { useValidation } from '@/composites/base/validation';
-import { useI18n } from '@/composites/base/i18n';
+import { useValidation } from '@/compositions/base/validation';
+import { useI18n } from '@/compositions/base/i18n';
 import store from '@/store';
 
 const symbols = {

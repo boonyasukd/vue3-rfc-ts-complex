@@ -16,12 +16,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from '@/composites/base/i18n';
-import { useFormManager } from '@/composites/form_management';
+import { useI18n } from '@/compositions/base/i18n';
+import { useFormManager } from '@/compositions/form_management';
 import { NewCustomerForm } from '@/models';
+import FormItem from './FormItem.vue';
+import FormActions from './FormActions.vue';
 
-export { default as FormItem } from './FormItem.vue';
-export { default as FormActions } from './FormActions.vue';
-export const { formName, valid, save, reset } = useFormManager(NewCustomerForm);
-export const { msg } = useI18n();
+const { formName, valid, save, reset } = useFormManager(NewCustomerForm);
+const { msg } = useI18n();
 </script>

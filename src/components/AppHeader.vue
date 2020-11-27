@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from '@/composites/base/i18n';
+import { useI18n } from '@/compositions/base/i18n';
 import store from '@/store';
 
-export const { msg } = useI18n();
-export const { state, getters } = store;
+const { msg } = useI18n();
+const { state, getters } = store;
 </script>
 
 <style>
