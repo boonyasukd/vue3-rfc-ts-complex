@@ -1,7 +1,7 @@
 import log from 'loglevel';
 import { createApp, defineComponent, h, toRef } from 'vue';
-import { initTheme } from '@/composites/base/theme';
-import { initI18n } from '@/composites/base/i18n';
+import { initTheme } from '@/compositions/base/theme';
+import { initI18n } from '@/compositions/base/i18n';
 import store from '@/store';
 import router from '@/router';
 import App from '@/App.vue';

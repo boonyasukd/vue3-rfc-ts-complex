@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <app-header></app-header>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm">
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-export { default as Header } from '@/components/Header.vue';
+import AppHeader from './components/AppHeader.vue';
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :for="fieldName">{{ label }}</label>
+    <label :for="fieldName">{{ myLabel }}</label>
     <input
       :id="fieldName"
       class="form-control"
@@ -12,10 +12,10 @@
   </div>
 </template>
 
-<script lang="ts" setup="props">
-import { useFormFieldManager } from '@/composites/form_management';
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+import { useFormFieldManager } from '@/compositions/form_management';
 
-declare const props: { fieldName: string };
-
-export const { value, label, error } = useFormFieldManager(props.fieldName);
+const props = defineProps<{ fieldName: string }>();
+const { value, label: myLabel, error } = useFormFieldManager(props.fieldName);
 </script>

@@ -26,8 +26,7 @@ import { useRouter } from 'vue-router';
 import store from '@/store';
 
 const router = useRouter();
-
-export const loginAndRedirect = (name: string) => {
+const loginAndRedirect = (name: string) => {
   store.commit.login(name);
   router.push({ name: 'formChooser' });
 };
