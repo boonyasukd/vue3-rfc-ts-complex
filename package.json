@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "3.8.0",
     "direct-vuex": "0.12.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "loglevel": "1.7.1",
     "string-format-obj": "1.1.1",
     "validatorjs": "3.21.0",
